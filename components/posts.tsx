@@ -1,16 +1,20 @@
+"use client";
+import { usePosts } from "@/store";
 import Link from "next/link";
+import { useEffect } from "react";
 
-type Post = {
-  id: number;
-  title: string;
-};
+export default function Posts() {
+  const posts = usePosts((state) => state.posts);
+  const loading = usePosts((state) => state.loading);
+  const getAllPosts = usePosts((state) => state.getAllPosts);
 
-type Props = {
-  posts: Post[];
-};
+  useEffect(() => {
+    getAllPosts();
+  }, []);
 
-export default function Posts({ posts }: Props) {
-  return (
+  return loading ? (
+    <h3>Loading...</h3>
+  ) : (
     <ul>
       {posts.map((post) => (
         <li key={post.id}>

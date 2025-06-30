@@ -1,4 +1,4 @@
-export async function getData() {
+export async function getAllPosts() {
   const resposne = await fetch("https://jsonplaceholder.typicode.com/posts", {
     next: {
       revalidate: 60,
