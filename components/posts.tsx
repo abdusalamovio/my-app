@@ -10,7 +10,7 @@ export default function Posts() {
     <h3>Loading...</h3>
   ) : (
     <ul>
-      {posts.map((post) => (
+      {posts.map((post: any) => (
         <li key={post.id}>
           <Link href={`/blog/${post.id}`}>{post.title}</Link>
         </li>
